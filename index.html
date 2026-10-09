@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hotel Triangle | Excellence All The Way – Mbarara, Uganda</title>
+<meta name="description" content="Hotel Triangle in Mbarara, Uganda – modern luxury rooms, pool, fine dining, conference facilities and spa. Excellence All The Way.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0B192C; --navy-2:#13294a; --gold:#C5A880; --gold-d:#a98a5f;
+  --light:#F8F9FA; --charcoal:#1E1E1E; --muted:#6b7280;
+  --radius:16px; --shadow:0 10px 30px rgba(11,25,44,.10); --shadow-lg:0 20px 50px rgba(11,25,44,.22);
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;color:var(--charcoal);background:var(--light);line-height:1.65;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;line-height:1.2;color:var(--navy)}
+.container{width:min(1200px,92%);margin:0 auto}
+section{padding:96px 0}
+.eyebrow{display:inline-block;color:var(--gold-d);font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;font-weight:600;margin-bottom:12px}
+.section-head{text-align:center;max-width:680px;margin:0 auto 56px}
+.section-head h2{font-size:clamp(2rem,4vw,2.9rem);margin-bottom:14px}
+.section-head p{color:var(--muted)}
+.divider{width:64px;height:2px;background:var(--gold);margin:18px auto 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 28px;border-radius:999px;font-weight:600;font-size:.92rem;border:1.5px solid transparent;cursor:pointer;transition:all .3s var(--ease);font-family:inherit}
+.btn-gold{background:var(--gold);color:var(--navy)}
+.btn-gold:hover{background:var(--gold-d);color:#fff;transform:translateY(-2px);box-shadow:0 10px 22px rgba(197,168,128,.4)}
+.btn-outline{border-color:var(--gold);color:var(--gold);background:transparent}
+.btn-outline:hover{background:var(--gold);color:var(--navy)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-navy:hover{background:var(--navy-2);transform:translateY(-2px)}
+svg.i{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* Header */
+header{position:fixed;inset:0 0 auto 0;z-index:100;padding:18px 0;transition:all .35s var(--ease)}
+header.scrolled{background:rgba(11,25,44,.78);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:10px 0;box-shadow:0 6px 24px rgba(0,0,0,.2)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo img{height:52px;width:auto;transition:height .3s}
+header.scrolled .logo img{height:42px}
+.nav-links{display:flex;align-items:center;gap:30px;list-style:none}
+.nav-links a{color:#fff;font-size:.9rem;font-weight:500;position:relative;padding:4px 0}
+.nav-links a:not(.btn)::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--gold);transition:width .3s}
+.nav-links a:not(.btn):hover::after,.nav-links a.active::after{width:100%}
+.burger{display:none;background:none;border:0;color:#fff;cursor:pointer}
+.burger svg{width:28px;height:28px}
+
+/* Hero */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;color:#fff;padding:140px 0 200px;overflow:hidden}
+.slides{position:absolute;inset:0}
+.slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.08);transition:opacity 1.4s ease,transform 7s linear}
+.slide.active{opacity:1;transform:scale(1)}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,rgba(11,25,44,.7) 0%,rgba(11,25,44,.45) 45%,rgba(11,25,44,.85) 100%)}
+.hero-content{position:relative;z-index:2;max-width:760px}
+.hero .tag{color:var(--gold);letter-spacing:.35em;text-transform:uppercase;font-size:.8rem;font-weight:600;margin-bottom:18px;display:block}
+.hero h1{color:#fff;font-size:clamp(2.4rem,6vw,4.6rem);margin-bottom:20px}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero p{font-size:1.1rem;color:rgba(255,255,255,.85);max-width:560px;margin-bottom:34px}
+.hero-ctas{display:flex;gap:14px;flex-wrap:wrap}
+.dots{position:absolute;z-index:3;right:4%;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:12px}
+.dots button{width:10px;height:10px;border-radius:50%;border:1.5px solid #fff;background:transparent;cursor:pointer;transition:.3s;padding:0}
+.dots button.active{background:var(--gold);border-color:var(--gold);transform:scale(1.3)}
+
+/* Booking bar */
+.bookbar{position:absolute;z-index:4;left:50%;bottom:36px;transform:translateX(-50%);width:min(1100px,92%);background:#fff;border-radius:20px;box-shadow:var(--shadow-lg);padding:22px;display:grid;grid-template-columns:repeat(4,1fr) auto;gap:16px;align-items:end}
+.field label{display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--muted);font-weight:600;margin-bottom:6px}
+.field input,.field select,.field textarea{width:100%;padding:12px 14px;border:1.5px solid #e5e7eb;border-radius:10px;font-family:inherit;font-size:.92rem;color:var(--charcoal);background:#fff;transition:border .25s,box-shadow .25s}
+.field input:focus,.field select:focus,.field textarea:focus{outline:0;border-color:var(--gold);box-shadow:0 0 0 4px rgba(197,168,128,.2)}
+.field .err{display:none;color:#c0392b;font-size:.75rem;margin-top:4px}
+.field.invalid input,.field.invalid select,.field.invalid textarea{border-color:#c0392b}
+.field.invalid .err{display:block}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.about-text h2{font-size:clamp(2rem,4vw,2.8rem);margin-bottom:20px}
+.about-text p{color:#4b5563;margin-bottom:16px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0 32px}
+.stat{padding:18px;background:#fff;border-radius:var(--radius);box-shadow:var(--shadow);text-align:center}
+.stat b{display:block;font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--gold-d)}
+.stat span{font-size:.8rem;color:var(--muted)}
+.about-imgs{position:relative;height:540px}
+.about-imgs img{position:absolute;object-fit:cover;border-radius:var(--radius);box-shadow:var(--shadow-lg);transition:transform .6s var(--ease)}
+.about-imgs img:first-child{width:72%;height:420px;top:0;left:0}
+.about-imgs img:last-child{width:58%;height:300px;right:0;bottom:0;border:8px solid var(--light)}
+.about-imgs:hover img:first-child{transform:scale(1.03)}
+.about-imgs:hover img:last-child{transform:translateY(-6px)}
+
+/* Rooms */
+#rooms{background:#fff}
+.rooms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.room{background:var(--light);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);transition:transform .4s var(--ease),box-shadow .4s;display:flex;flex-direction:column}
+.room:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
+.room-img{position:relative;height:260px;overflow:hidden}
+.room-img img{width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.room:hover .room-img img{transform:scale(1.08)}
+.badge{position:absolute;top:16px;left:16px;background:var(--navy);color:var(--gold);padding:6px 14px;border-radius:999px;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600}
+.room-body{padding:26px;display:flex;flex-direction:column;flex:1}
+.room-body h3{font-size:1.5rem;margin-bottom:8px}
+.room-body p{color:var(--muted);font-size:.92rem;margin-bottom:18px}
+.room-amen{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.room-amen span{display:inline-flex;align-items:center;gap:6px;font-size:.76rem;background:#fff;border:1px solid #eceff3;padding:6px 10px;border-radius:999px;color:#374151}
+.room-amen svg{width:15px;height:15px;color:var(--gold-d)}
+.room-foot{margin-top:auto;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.price small{display:block;font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.price b{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--navy)}
+
+/* Amenities */
+.amen-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.amen{position:relative;border-radius:var(--radius);overflow:hidden;height:380px;color:#fff;box-shadow:var(--shadow);cursor:default}
+.amen img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.amen::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,25,44,.1) 30%,rgba(11,25,44,.92));transition:background .4s}
+.amen:hover img{transform:scale(1.1)}
+.amen:hover::after{background:linear-gradient(180deg,rgba(11,25,44,.35),rgba(11,25,44,.95))}
+.amen-in{position:absolute;z-index:2;left:0;right:0;bottom:0;padding:24px}
+.amen-ic{width:46px;height:46px;border-radius:12px;background:var(--gold);color:var(--navy);display:grid;place-items:center;margin-bottom:14px;transition:transform .4s var(--ease)}
+.amen:hover .amen-ic{transform:rotate(-8deg) scale(1.08)}
+.amen h3{color:#fff;font-size:1.3rem;margin-bottom:6px}
+.amen p{font-size:.86rem;color:rgba(255,255,255,.8)}
+.amen.noimg{background:linear-gradient(145deg,var(--navy),var(--navy-2))}
+
+/* Gallery */
+#gallery{background:#fff}
+.filters{display:flex;justify-content:center;flex-wrap:wrap;gap:10px;margin-bottom:36px}
+.filters button{padding:10px 24px;border-radius:999px;border:1.5px solid #e5e7eb;background:#fff;font-family:inherit;font-weight:600;font-size:.86rem;cursor:pointer;color:var(--charcoal);transition:.3s}
+.filters button:hover{border-color:var(--gold);color:var(--gold-d)}
+.filters button.active{background:var(--navy);color:var(--gold);border-color:var(--navy)}
+.gal-grid{columns:3;column-gap:18px}
+.gal-item{break-inside:avoid;margin-bottom:18px;border-radius:14px;overflow:hidden;position:relative;cursor:zoom-in;transition:opacity .4s,transform .4s}
+.gal-item.hide{display:none}
+.gal-item img{width:100%;transition:transform .7s var(--ease)}
+.gal-item::after{content:"+";position:absolute;inset:0;display:grid;place-items:center;font-size:3rem;color:#fff;background:rgba(11,25,44,.5);opacity:0;transition:opacity .35s}
+.gal-item:hover img{transform:scale(1.08)}
+.gal-item:hover::after{opacity:1}
+.lightbox{position:fixed;inset:0;z-index:300;background:rgba(5,10,18,.94);display:none;align-items:center;justify-content:center;padding:30px}
+.lightbox.open{display:flex;animation:fade .3s}
+.lightbox img{max-height:86vh;max-width:92vw;border-radius:10px;box-shadow:0 20px 60px #000}
+.lb-btn{position:absolute;background:rgba(255,255,255,.1);border:0;color:#fff;width:48px;height:48px;border-radius:50%;cursor:pointer;display:grid;place-items:center;transition:.3s}
+.lb-btn:hover{background:var(--gold);color:var(--navy)}
+.lb-close{top:22px;right:22px}.lb-prev{left:22px;top:50%}.lb-next{right:22px;top:50%}
+.lb-count{position:absolute;bottom:20px;color:#cbd5e1;font-size:.85rem}
+
+/* Location */
+.loc-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:40px;align-items:stretch}
+.loc-card{background:var(--navy);color:#fff;border-radius:var(--radius);padding:44px;box-shadow:var(--shadow-lg)}
+.loc-card h3{color:#fff;font-size:1.8rem;margin-bottom:26px}
+.loc-item{display:flex;gap:16px;margin-bottom:22px}
+.loc-item .ic{width:44px;height:44px;border-radius:12px;background:rgba(197,168,128,.15);color:var(--gold);display:grid;place-items:center;flex:none}
+.loc-item b{display:block;color:var(--gold);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:2px}
+.loc-item a:hover{color:var(--gold)}
+.map{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);min-height:440px}
+.map iframe{width:100%;height:100%;min-height:440px;border:0}
+
+/* Footer */
+footer{background:var(--navy);color:#cbd5e1;padding:80px 0 0}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1.2fr 1.1fr;gap:40px;padding-bottom:50px}
+footer h4{color:var(--gold);font-size:1.1rem;margin-bottom:18px}
+footer img{height:56px;margin-bottom:16px}
+footer ul{list-style:none}
+footer li{margin-bottom:10px;font-size:.92rem}
+footer li a:hover{color:var(--gold);padding-left:4px}
+footer li a{transition:.25s}
+.socials{display:flex;gap:12px;margin-top:20px}
+.socials a{width:42px;height:42px;border-radius:50%;border:1.5px solid rgba(197,168,128,.5);display:grid;place-items:center;color:var(--gold);transition:all .3s var(--ease)}
+.socials a:hover{background:var(--gold);color:var(--navy);transform:translateY(-4px)}
+.copy{border-top:1px solid rgba(255,255,255,.1);padding:22px 0;text-align:center;font-size:.84rem;color:#94a3b8}
+
+/* Modal */
+.overlay{position:fixed;inset:0;z-index:250;background:rgba(5,10,18,.7);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:20px;overflow-y:auto}
+.overlay.open{display:flex;animation:fade .3s}
+.modal{background:#fff;border-radius:22px;width:min(680px,100%);max-height:94vh;overflow-y:auto;box-shadow:var(--shadow-lg);animation:rise .45s var(--ease)}
+.modal-head{background:var(--navy);color:#fff;padding:28px 32px;position:relative;border-radius:22px 22px 0 0}
+.modal-head h3{color:#fff;font-size:1.7rem}
+.modal-head p{color:var(--gold);font-size:.88rem}
+.x{position:absolute;top:18px;right:18px;background:rgba(255,255,255,.12);border:0;color:#fff;width:38px;height:38px;border-radius:50%;cursor:pointer;display:grid;place-items:center;transition:.3s}
+.x:hover{background:var(--gold);color:var(--navy)}
+.modal form{padding:30px 32px 34px;display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.modal .full{grid-column:1/-1}
+.success{text-align:center;padding:48px 36px}
+.success .check{width:84px;height:84px;border-radius:50%;background:rgba(197,168,128,.18);color:var(--gold-d);display:grid;place-items:center;margin:0 auto 20px;animation:pop .6s var(--ease)}
+.success .check svg{width:42px;height:42px;stroke-width:2.4}
+.success h3{font-size:1.9rem;margin-bottom:10px}
+.success p{color:var(--muted);margin-bottom:8px}
+.summary{background:var(--light);border-radius:12px;padding:16px;text-align:left;font-size:.9rem;margin:18px 0 24px}
+.summary div{display:flex;justify-content:space-between;gap:12px;padding:4px 0}
+.summary span{color:var(--muted)}
+
+.wa-float{position:fixed;right:22px;bottom:22px;z-index:90;width:58px;height:58px;border-radius:50%;background:#25D366;color:#fff;display:grid;place-items:center;box-shadow:0 10px 24px rgba(37,211,102,.45);transition:.3s}
+.wa-float:hover{transform:scale(1.1) rotate(-6deg)}
+.wa-float svg{width:28px;height:28px}
+
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes rise{from{opacity:0;transform:translateY(40px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes pop{0%{transform:scale(0)}70%{transform:scale(1.15)}100%{transform:scale(1)}}
+
+/* Responsive */
+@media(max-width:1080px){
+  .amen-grid{grid-template-columns:repeat(2,1fr)}
+  .rooms-grid{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .bookbar{grid-template-columns:repeat(2,1fr)}
+  .bookbar .btn{grid-column:1/-1}
+  .hero{padding-bottom:340px}
+}
+@media(max-width:860px){
+  section{padding:70px 0}
+  .burger{display:block}
+  .nav-links{position:fixed;top:0;right:-100%;height:100vh;width:min(320px,80%);background:var(--navy);flex-direction:column;justify-content:center;gap:26px;transition:right .45s var(--ease);box-shadow:-20px 0 40px rgba(0,0,0,.4)}
+  .nav-links.open{right:0}
+  .nav-links a{font-size:1.1rem}
+  .about-grid,.loc-grid{grid-template-columns:1fr}
+  .about-imgs{height:460px}
+  .gal-grid{columns:2}
+  .dots{display:none}
+}
+@media(max-width:640px){
+  .rooms-grid,.amen-grid{grid-template-columns:1fr}
+  .gal-grid{columns:1}
+  .foot-grid{grid-template-columns:1fr}
+  .modal form{grid-template-columns:1fr;padding:24px 22px}
+  .stats{grid-template-columns:1fr}
+  .bookbar{grid-template-columns:1fr;padding:18px;bottom:20px}
+  .hero{padding:120px 0 470px}
+  .about-imgs{height:400px}
+  .about-imgs img:first-child{height:300px}
+  .about-imgs img:last-child{height:220px}
+  .loc-card{padding:30px 24px}
+  .lb-prev,.lb-next{top:auto;bottom:14px}
+  .lb-prev{left:22%}.lb-next{right:22%}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<!-- SVG icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="wifi" viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0M1.42 9a16 16 0 0 1 21.16 0M8.53 16.11a6 6 0 0 1 6.95 0M12 20h.01"/></symbol>
+  <symbol id="bed" viewBox="0 0 24 24"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8M2 17h20M6 10V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3"/></symbol>
+  <symbol id="ac" viewBox="0 0 24 24"><path d="M12 2v20M4.9 6l14.2 12M4.9 18L19.1 6M2 12h20"/></symbol>
+  <symbol id="service" viewBox="0 0 24 24"><path d="M3 18h18M5 18a7 7 0 0 1 14 0M12 8V6M10 6h4"/></symbol>
+  <symbol id="tv" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="13" rx="2"/><path d="M8 21h8"/></symbol>
+  <symbol id="coffee" viewBox="0 0 24 24"><path d="M17 8h1a4 4 0 0 1 0 8h-1M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4zM6 2v3M10 2v3M14 2v3"/></symbol>
+  <symbol id="pool" viewBox="0 0 24 24"><path d="M2 18c1.5 0 1.5 1 3 1s1.5-1 3-1 1.5 1 3 1 1.5-1 3-1 1.5 1 3 1 1.5-1 3-1M2 14c1.5 0 1.5 1 3 1s1.5-1 3-1 1.5 1 3 1 1.5-1 3-1 1.5 1 3 1 1.5-1 3-1M8 12V5a2 2 0 0 1 4 0M14 12V5a2 2 0 0 1 4 0M8 8h6"/></symbol>
+  <symbol id="dine" viewBox="0 0 24 24"><path d="M7 2v9a2 2 0 0 0 2 2v9M5 2v6M9 2v6M17 22V2c-2 1-4 4-4 8s2 4 4 4"/></symbol>
+  <symbol id="conf" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="12" rx="2"/><path d="M8 21l4-6 4 6M7 8h4M7 11h8"/></symbol>
+  <symbol id="spa" viewBox="0 0 24 24"><path d="M12 22c4-2 7-5.5 7-10-3 0-5.5 1.5-7 4-1.5-2.5-4-4-7-4 0 4.5 3 8 7 10zM12 16c0-5 1.5-9 0-14-1.5 5 0 9 0 14z"/></symbol>
+  <symbol id="pin" viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></symbol>
+  <symbol id="clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="check" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></symbol>
+  <symbol id="close" viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></symbol>
+  <symbol id="left" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></symbol>
+  <symbol id="right" viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></symbol>
+  <symbol id="menu" viewBox="0 0 24 24"><path d="M3 6h18M3 12h18M3 18h18"/></symbol>
+  <symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+</svg>
+
+<!-- HEADER -->
+<header id="header">
+  <div class="container nav">
+    <a href="#home" class="logo" aria-label="Hotel Triangle home">
+      <img src="hoteltriangle-logo-white-final.png" alt="Hotel Triangle" onerror="this.onerror=null;this.src='hoteltriangle-logo-white.png'">
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="active">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#rooms">Accommodation</a></li>
+      <li><a href="#amenities">Amenities</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#" class="btn btn-gold" data-book>Book Now</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Toggle menu"><svg class="i"><use href="#menu"/></svg></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="slides" id="slides">
+    <div class="slide active" style="background-image:url('ex-2.jpg')"></div>
+    <div class="slide" style="background-image:url('ex-3.jpg')"></div>
+    <div class="slide" style="background-image:url('ex-1.jpg')"></div>
+    <div class="slide" style="background-image:url('ex-pool.jpg')"></div>
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <span class="tag">Excellence All The Way</span>
+      <h1>Experience <em>Luxury</em> &amp; Comfort in Mbarara</h1>
+      <p>Welcome to Hotel Triangle — elegant rooms, a resort-style pool, fine dining and warm Ugandan hospitality, all in the heart of Mbarara.</p>
+      <div class="hero-ctas">
+        <a href="#" class="btn btn-gold" data-book>Reserve Your Stay</a>
+        <a href="#rooms" class="btn btn-outline">Explore Rooms</a>
+      </div>
+    </div>
+  </div>
+  <div class="dots" id="dots"></div>
+
+  <form class="bookbar" id="quickBar" novalidate>
+    <div class="field"><label for="qIn">Check-in</label><input type="date" id="qIn"></div>
+    <div class="field"><label for="qOut">Check-out</label><input type="date" id="qOut"></div>
+    <div class="field"><label for="qGuests">Guests</label>
+      <select id="qGuests"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></div>
+    <div class="field"><label for="qRoom">Room type</label>
+      <select id="qRoom"><option value="">Any room</option><option>Deluxe Room</option><option>Executive Suite</option><option>Family Suite</option></select></div>
+    <button type="submit" class="btn btn-gold">Check Availability</button>
+  </form>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container about-grid">
+    <div class="about-text reveal">
+      <span class="eyebrow">About Hotel Triangle</span>
+      <h2>A premier destination in the heart of Mbarara</h2>
+      <p>Hotel Triangle blends contemporary design with genuine Ugandan warmth. Whether you are in town for business, a weekend getaway, a wedding or a corporate event, our team delivers service that feels personal and polished.</p>
+      <p>Unwind by the pool, dine in our restaurant and bar, host meetings in our conference spaces, and rest in rooms designed for comfort — all minutes from Mbarara's key destinations.</p>
+      <div class="stats">
+        <div class="stat"><b>24/7</b><span>Front desk &amp; room service</span></div>
+        <div class="stat"><b>Free</b><span>High-speed Wi-Fi</span></div>
+        <div class="stat"><b>5★</b><span>Guest-first hospitality</span></div>
+      </div>
+      <a href="#" class="btn btn-navy" data-book>Plan Your Visit <svg class="i"><use href="#arrow"/></svg></a>
+    </div>
+    <div class="about-imgs reveal">
+      <img src="lobby-1.jpg" alt="Hotel Triangle lobby" loading="lazy">
+      <img src="lobby-2.jpg" alt="Hotel Triangle lounge area" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- ROOMS -->
+<section id="rooms">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Accommodation</span>
+      <h2>Rooms &amp; Suites</h2>
+      <p>Thoughtfully appointed spaces to rest, work and recharge.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="rooms-grid">
+      <article class="room reveal">
+        <div class="room-img"><img src="bedroom-1.jpg" alt="Deluxe Room" loading="lazy"><span class="badge">Most Popular</span></div>
+        <div class="room-body">
+          <h3>Deluxe Room</h3>
+          <p>A calm, stylish retreat with a plush king bed and everything you need for a comfortable stay.</p>
+          <div class="room-amen">
+            <span><svg class="i"><use href="#wifi"/></svg>Free Wi-Fi</span>
+            <span><svg class="i"><use href="#bed"/></svg>King Bed</span>
+            <span><svg class="i"><use href="#ac"/></svg>AC</span>
+            <span><svg class="i"><use href="#service"/></svg>Room Service</span>
+            <span><svg class="i"><use href="#tv"/></svg>TV</span>
+            <span><svg class="i"><use href="#coffee"/></svg>Breakfast</span>
+          </div>
+          <div class="room-foot"><div class="price"><small>Rates</small><b>On request</b></div>
+            <button class="btn btn-gold" data-book data-room="Deluxe Room">Book This Room</button></div>
+        </div>
+      </article>
+      <article class="room reveal">
+        <div class="room-img"><img src="room-2.jpg" alt="Executive Suite" loading="lazy"><span class="badge">Business</span></div>
+        <div class="room-body">
+          <h3>Executive Suite</h3>
+          <p>Extra space and refined finishes, ideal for business travellers and guests who want a little more.</p>
+          <div class="room-amen">
+            <span><svg class="i"><use href="#wifi"/></svg>Free Wi-Fi</span>
+            <span><svg class="i"><use href="#bed"/></svg>King Bed</span>
+            <span><svg class="i"><use href="#ac"/></svg>AC</span>
+            <span><svg class="i"><use href="#service"/></svg>Room Service</span>
+            <span><svg class="i"><use href="#tv"/></svg>TV</span>
+            <span><svg class="i"><use href="#coffee"/></svg>Breakfast</span>
+          </div>
+          <div class="room-foot"><div class="price"><small>Rates</small><b>On request</b></div>
+            <button class="btn btn-gold" data-book data-room="Executive Suite">Book This Room</button></div>
+        </div>
+      </article>
+      <article class="room reveal">
+        <div class="room-img"><img src="room-3.jpg" alt="Family Suite" loading="lazy"><span class="badge">Family</span></div>
+        <div class="room-body">
+          <h3>Family Suite</h3>
+          <p>Generous, light-filled space designed so the whole family can relax together in comfort.</p>
+          <div class="room-amen">
+            <span><svg class="i"><use href="#wifi"/></svg>Free Wi-Fi</span>
+            <span><svg class="i"><use href="#bed"/></svg>King Bed</span>
+            <span><svg class="i"><use href="#ac"/></svg>AC</span>
+            <span><svg class="i"><use href="#service"/></svg>Room Service</span>
+            <span><svg class="i"><use href="#tv"/></svg>TV</span>
+            <span><svg class="i"><use href="#coffee"/></svg>Breakfast</span>
+          </div>
+          <div class="room-foot"><div class="price"><small>Rates</small><b>On request</b></div>
+            <button class="btn btn-gold" data-book data-room="Family Suite">Book This Room</button></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section id="amenities">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Amenities &amp; Facilities</span>
+      <h2>Everything for an unforgettable stay</h2>
+      <p>From poolside relaxation to boardroom-ready spaces.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="amen-grid">
+      <div class="amen reveal"><img src="ex-pool.jpg" alt="Swimming pool and sun deck" loading="lazy">
+        <div class="amen-in"><div class="amen-ic"><svg class="i"><use href="#pool"/></svg></div><h3>Swimming Pool &amp; Sun Deck</h3><p>Cool off, lounge and soak up the Mbarara sun.</p></div></div>
+      <div class="amen reveal"><img src="lobby-3.jpg" alt="Fine dining and bar" loading="lazy">
+        <div class="amen-in"><div class="amen-ic"><svg class="i"><use href="#dine"/></svg></div><h3>Fine Dining &amp; Bar</h3><p>Local flavours and international favourites, with drinks to match.</p></div></div>
+      <div class="amen reveal"><img src="lobby-2.jpg" alt="Conference and event facilities" loading="lazy">
+        <div class="amen-in"><div class="amen-ic"><svg class="i"><use href="#conf"/></svg></div><h3>Conference &amp; Events</h3><p>Flexible spaces for meetings, weddings and celebrations.</p></div></div>
+      <div class="amen noimg reveal">
+        <div class="amen-in"><div class="amen-ic"><svg class="i"><use href="#spa"/></svg></div><h3>Wellness &amp; Spa Center</h3><p>Restorative treatments to refresh body and mind.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Gallery</span>
+      <h2>A glimpse of Hotel Triangle</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="filters" id="filters">
+      <button class="active" data-f="all">All</button>
+      <button data-f="rooms">Rooms</button>
+      <button data-f="pool">Pool</button>
+      <button data-f="lobby">Lobby</button>
+      <button data-f="exterior">Exterior</button>
+    </div>
+    <div class="gal-grid" id="galGrid">
+      <div class="gal-item" data-c="exterior"><img src="ex-1.jpg" alt="Hotel exterior" loading="lazy"></div>
+      <div class="gal-item" data-c="rooms"><img src="bedroom-1.jpg" alt="Deluxe bedroom" loading="lazy"></div>
+      <div class="gal-item" data-c="pool"><img src="ex-pool.jpg" alt="Swimming pool" loading="lazy"></div>
+      <div class="gal-item" data-c="lobby"><img src="lobby-1.jpg" alt="Lobby" loading="lazy"></div>
+      <div class="gal-item" data-c="exterior"><img src="ex-2.jpg" alt="Hotel facade" loading="lazy"></div>
+      <div class="gal-item" data-c="rooms"><img src="room-2.jpg" alt="Executive room" loading="lazy"></div>
+      <div class="gal-item" data-c="pool"><img src="ex-pool2.jpg" alt="Pool and sun deck" loading="lazy"></div>
+      <div class="gal-item" data-c="lobby"><img src="lobby-2.jpg" alt="Lounge" loading="lazy"></div>
+      <div class="gal-item" data-c="exterior"><img src="ex-3.jpg" alt="Hotel at dusk" loading="lazy"></div>
+      <div class="gal-item" data-c="rooms"><img src="room-3.jpg" alt="Family suite" loading="lazy"></div>
+      <div class="gal-item" data-c="lobby"><img src="lobby-3.jpg" alt="Reception and seating" loading="lazy"></div>
+      <div class="gal-item" data-c="rooms"><img src="room-4.jpg" alt="Guest room" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Find Us</span>
+      <h2>Location &amp; Contact</h2>
+      <p>Conveniently located in Mbarara, Uganda.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="loc-grid">
+      <div class="loc-card reveal">
+        <h3>Get in touch</h3>
+        <div class="loc-item"><div class="ic"><svg class="i"><use href="#pin"/></svg></div><div><b>Address</b>Off Coca-Cola Plant, Mutaasa Road,<br>Mbarara, Uganda</div></div>
+        <div class="loc-item"><div class="ic"><svg class="i"><use href="#phone"/></svg></div><div><b>Reservations</b><a href="tel:+256786221919">+256 786 221 919</a><br><a href="tel:+256393240502">+256 393 240 502</a></div></div>
+        <div class="loc-item"><div class="ic"><svg class="i"><use href="#mail"/></svg></div><div><b>Email</b><a href="mailto:reservations@hoteltrianglembarara.com">reservations@hoteltrianglembarara.com</a></div></div>
+        <div class="loc-item"><div class="ic"><svg class="i"><use href="#clock"/></svg></div><div><b>Reception</b>Open 24 hours, every day</div></div>
+        <a class="btn btn-gold" target="_blank" rel="noopener" href="https://maps.app.goo.gl/7wv8YozEyBiqonRU8">Get Directions <svg class="i"><use href="#arrow"/></svg></a>
+      </div>
+      <div class="map reveal">
+        <iframe title="Hotel Triangle location map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen
+          src="https://www.google.com/maps?q=Hotel+Triangle+Mutaasa+Road+Mbarara+Uganda&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container foot-grid">
+    <div>
+      <img src="hoteltriangle-logo-white-final.png" alt="Hotel Triangle" onerror="this.onerror=null;this.src='hoteltriangle-logo-white.png'">
+      <p>Excellence All The Way. Modern luxury and warm hospitality in Mbarara, Uganda.</p>
+      <div class="socials">
+        <a href="#" aria-label="Facebook"><svg class="i" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a href="#" aria-label="Instagram"><svg class="i" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a>
+        <a href="#" aria-label="X (Twitter)"><svg class="i" viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20"/></svg></a>
+        <a href="https://wa.me/256786221919" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="i" viewBox="0 0 24 24"><path d="M3 21l1.65-4.9A9 9 0 1 1 8 19.4z"/><path d="M9 9c0 3 3 6 6 6l1-2-2-1-1 .8c-.8-.4-1.6-1.2-2-2l.8-1-1-2z"/></svg></a>
+      </div>
+    </div>
+    <div>
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#rooms">Accommodation</a></li>
+        <li><a href="#amenities">Amenities</a></li><li><a href="#gallery">Gallery</a></li><li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li>Off Coca-Cola Plant, Mutaasa Road, Mbarara</li>
+        <li><a href="tel:+256786221919">+256 786 221 919</a></li>
+        <li><a href="tel:+256393240502">+256 393 240 502</a></li>
+        <li><a href="mailto:reservations@hoteltrianglembarara.com">reservations@hoteltrianglembarara.com</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Operating Hours</h4>
+      <ul>
+        <li>Reception: 24 / 7</li>
+        <li>Restaurant: 6:30am – 11:00pm</li>
+        <li>Pool: 7:00am – 9:00pm</li>
+        <li>Check-in: 2:00pm · Check-out: 11:00am</li>
+      </ul>
+    </div>
+  </div>
+  <div class="copy">© <span id="yr"></span> Hotel Triangle, Mbarara. All rights reserved. · Excellence All The Way</div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/256786221919" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg class="i" viewBox="0 0 24 24"><path d="M3 21l1.65-4.9A9 9 0 1 1 8 19.4z"/><path d="M9 9c0 3 3 6 6 6l1-2-2-1-1 .8c-.8-.4-1.6-1.2-2-2l.8-1-1-2z"/></svg>
+</a>
+
+<!-- BOOKING MODAL -->
+<div class="overlay" id="bookModal" role="dialog" aria-modal="true" aria-labelledby="bkTitle">
+  <div class="modal">
+    <div class="modal-head">
+      <h3 id="bkTitle">Book Your Stay</h3>
+      <p>Excellence All The Way — we'll confirm your reservation shortly.</p>
+      <button class="x" data-close aria-label="Close"><svg class="i"><use href="#close"/></svg></button>
+    </div>
+    <form id="bookForm" novalidate>
+      <div class="field full"><label for="fName">Full name</label><input id="fName" type="text" placeholder="Jane Doe" autocomplete="name"><div class="err">Please enter your full name.</div></div>
+      <div class="field"><label for="fEmail">Email</label><input id="fEmail" type="email" placeholder="you@email.com" autocomplete="email"><div class="err">Enter a valid email address.</div></div>
+      <div class="field"><label for="fPhone">Phone number</label><input id="fPhone" type="tel" placeholder="+256 7xx xxx xxx" autocomplete="tel"><div class="err">Enter a valid phone number.</div></div>
+      <div class="field"><label for="fIn">Check-in</label><input id="fIn" type="date"><div class="err">Choose a valid check-in date.</div></div>
+      <div class="field"><label for="fOut">Check-out</label><input id="fOut" type="date"><div class="err">Check-out must be after check-in.</div></div>
+      <div class="field"><label for="fGuests">Guests</label>
+        <select id="fGuests"><option value="1">1 guest</option><option value="2" selected>2 guests</option><option value="3">3 guests</option><option value="4">4 guests</option><option value="5">5 guests</option><option value="6">6 guests</option></select><div class="err">Select guests.</div></div>
+      <div class="field"><label for="fRoom">Room type</label>
+        <select id="fRoom"><option value="">Select a room</option><option>Deluxe Room</option><option>Executive Suite</option><option>Family Suite</option></select><div class="err">Please select a room type.</div></div>
+      <div class="field full"><label for="fNotes">Special requests (optional)</label><textarea id="fNotes" rows="3" placeholder="Airport pickup, late check-in, dietary needs…"></textarea></div>
+      <div class="full"><button type="submit" class="btn btn-gold" style="width:100%">Confirm Reservation Request</button></div>
+    </form>
+    <div class="success" id="bookSuccess" hidden>
+      <div class="check"><svg class="i"><use href="#check"/></svg></div>
+      <h3>Request received!</h3>
+      <p>Thank you, <b id="sName"></b>. Our reservations team will contact you shortly to confirm.</p>
+      <div class="summary" id="sSummary"></div>
+      <button class="btn btn-navy" data-close>Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" aria-modal="true" role="dialog">
+  <button class="lb-btn lb-close" id="lbClose" aria-label="Close"><svg class="i"><use href="#close"/></svg></button>
+  <button class="lb-btn lb-prev" id="lbPrev" aria-label="Previous"><svg class="i"><use href="#left"/></svg></button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-btn lb-next" id="lbNext" aria-label="Next"><svg class="i"><use href="#right"/></svg></button>
+  <div class="lb-count" id="lbCount"></div>
+</div>
+
+<script>
+(function(){
+  const $ = (s,c=document)=>c.querySelector(s), $$ = (s,c=document)=>[...c.querySelectorAll(s)];
+
+  // Year
+  $('#yr').textContent = new Date().getFullYear();
+
+  // Sticky glass header
+  const header = $('#header');
+  const onScroll = ()=>{ header.classList.toggle('scrolled', window.scrollY>40); };
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // Mobile nav
+  const navLinks = $('#navLinks');
+  $('#burger').addEventListener('click',()=>navLinks.classList.toggle('open'));
+  $$('#navLinks a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+
+  // Active link on scroll
+  const sections = $$('section[id]');
+  const links = $$('#navLinks a[href^="#"]:not(.btn)');
+  const spy = new IntersectionObserver(es=>{
+    es.forEach(e=>{ if(e.isIntersecting){
+      links.forEach(l=>l.classList.toggle('active', l.getAttribute('href')==='#'+e.target.id));
+    }});
+  },{rootMargin:'-45% 0px -50% 0px'});
+  sections.forEach(s=>spy.observe(s));
+
+  // Reveal on scroll
+  const rv = new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); rv.unobserve(e.target);} }),{threshold:.12});
+  $$('.reveal').forEach(el=>rv.observe(el));
+
+  // Hero slider
+  const slides = $$('.slide'), dotsWrap = $('#dots'); let cur = 0, timer;
+  slides.forEach((_,i)=>{ const b=document.createElement('button'); b.setAttribute('aria-label','Slide '+(i+1)); b.onclick=()=>{go(i);restart();}; dotsWrap.appendChild(b); });
+  const dots = $$('button',dotsWrap);
+  function go(i){ slides[cur].classList.remove('active'); dots[cur].classList.remove('active'); cur=(i+slides.length)%slides.length; slides[cur].classList.add('active'); dots[cur].classList.add('active'); }
+  function restart(){ clearInterval(timer); timer=setInterval(()=>go(cur+1),6000); }
+  go(0); restart();
+
+  // Dates
+  const iso = d=>{ const z=new Date(d.getTime()-d.getTimezoneOffset()*60000); return z.toISOString().slice(0,10); };
+  const today = new Date(), tmr = new Date(Date.now()+864e5);
+  ['qIn','fIn'].forEach(id=>{ const el=$('#'+id); el.min=iso(today); });
+  ['qOut','fOut'].forEach(id=>{ const el=$('#'+id); el.min=iso(tmr); });
+  $('#qIn').addEventListener('change',e=>{ const n=new Date(e.target.value); n.setDate(n.getDate()+1); $('#qOut').min=iso(n); if($('#qOut').value<=e.target.value) $('#qOut').value=''; });
+  $('#fIn').addEventListener('change',e=>{ const n=new Date(e.target.value); n.setDate(n.getDate()+1); $('#fOut').min=iso(n); if($('#fOut').value<=e.target.value) $('#fOut').value=''; });
+
+  // Modal
+  const modal = $('#bookModal'), form = $('#bookForm'), success = $('#bookSuccess');
+  function openModal(pre={}){
+    form.hidden=false; success.hidden=true; form.reset();
+    $$('.field',form).forEach(f=>f.classList.remove('invalid'));
+    if(pre.room) $('#fRoom').value = pre.room;
+    if(pre.in) $('#fIn').value = pre.in;
+    if(pre.out) $('#fOut').value = pre.out;
+    if(pre.guests) $('#fGuests').value = pre.guests;
+    modal.classList.add('open'); document.body.style.overflow='hidden';
+    setTimeout(()=>$('#fName').focus(),150);
+  }
+  function closeModal(){ modal.classList.remove('open'); document.body.style.overflow=''; }
+  $$('[data-book]').forEach(b=>b.addEventListener('click',e=>{ e.preventDefault(); openModal({room:b.dataset.room}); }));
+  $$('[data-close]').forEach(b=>b.addEventListener('click',closeModal));
+  modal.addEventListener('click',e=>{ if(e.target===modal) closeModal(); });
+
+  // Quick booking bar
+  $('#quickBar').addEventListener('submit',e=>{
+    e.preventDefault();
+    openModal({room:$('#qRoom').value,in:$('#qIn').value,out:$('#qOut').value,guests:$('#qGuests').value});
+  });
+
+  // Validation
+  function setErr(id,bad){ $('#'+id).closest('.field').classList.toggle('invalid',bad); return bad; }
+  form.addEventListener('submit',e=>{
+    e.preventDefault();
+    const v = id=>$('#'+id).value.trim();
+    const inD = v('fIn'), outD = v('fOut');
+    const errs = [
+      setErr('fName', v('fName').length<3),
+      setErr('fEmail', !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v('fEmail'))),
+      setErr('fPhone', !/^\+?[0-9\s\-()]{9,16}$/.test(v('fPhone'))),
+      setErr('fIn', !inD || inD < iso(today)),
+      setErr('fOut', !outD || outD <= inD),
+      setErr('fGuests', !v('fGuests')),
+      setErr('fRoom', !v('fRoom'))
+    ];
+    if(errs.some(Boolean)){ const first=$('.field.invalid input,.field.invalid select',form); if(first) first.focus(); return; }
+    const nights = Math.round((new Date(outD)-new Date(inD))/864e5);
+    $('#sName').textContent = v('fName');
+    $('#sSummary').innerHTML =
+      `<div><span>Room</span><b>${v('fRoom')}</b></div>
+       <div><span>Check-in</span><b>${inD}</b></div>
+       <div><span>Check-out</span><b>${outD}</b></div>
+       <div><span>Nights</span><b>${nights}</b></div>
+       <div><span>Guests</span><b>${v('fGuests')}</b></div>
+       <div><span>Confirmation to</span><b>${v('fEmail').replace(/</g,'&lt;')}</b></div>`;
+    form.hidden=true; success.hidden=false;
+    /* Hook up your backend / email service here, e.g. fetch('/api/book', {method:'POST', body: JSON.stringify({...})}) */
+  });
+  $$('input,select,textarea',form).forEach(el=>el.addEventListener('input',()=>el.closest('.field').classList.remove('invalid')));
+
+  // Gallery filter
+  const items = $$('.gal-item');
+  $$('#filters button').forEach(btn=>btn.addEventListener('click',()=>{
+    $$('#filters button').forEach(b=>b.classList.remove('active')); btn.classList.add('active');
+    const f=btn.dataset.f; items.forEach(it=>it.classList.toggle('hide', f!=='all' && it.dataset.c!==f));
+  }));
+
+  // Lightbox
+  const lb=$('#lightbox'), lbImg=$('#lbImg'), lbCount=$('#lbCount'); let list=[], idx=0;
+  function show(){ const im=$('img',list[idx]); lbImg.src=im.src; lbImg.alt=im.alt; lbCount.textContent=`${idx+1} / ${list.length}`; }
+  items.forEach(it=>it.addEventListener('click',()=>{
+    list = items.filter(x=>!x.classList.contains('hide')); idx=list.indexOf(it); show();
+    lb.classList.add('open'); document.body.style.overflow='hidden';
+  }));
+  const closeLb=()=>{ lb.classList.remove('open'); document.body.style.overflow=''; };
+  const step=d=>{ idx=(idx+d+list.length)%list.length; show(); };
+  $('#lbClose').onclick=closeLb; $('#lbPrev').onclick=()=>step(-1); $('#lbNext').onclick=()=>step(1);
+  lb.addEventListener('click',e=>{ if(e.target===lb) closeLb(); });
+  document.addEventListener('keydown',e=>{
+    if(lb.classList.contains('open')){ if(e.key==='Escape') closeLb(); if(e.key==='ArrowLeft') step(-1); if(e.key==='ArrowRight') step(1); }
+    else if(e.key==='Escape' && modal.classList.contains('open')) closeModal();
+  });
+})();
+</script>
+</body>
+</html>
